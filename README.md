@@ -1,189 +1,154 @@
-# Hamilton <!-- omit in toc -->
+## moonwalk - a fast and minimalistic blog theme with clean dark mode
 
-A minimal and beautiful Jekyll theme best for writing and note-taking.
+<img src="https://raw.githubusercontent.com/abhinavs/moonwalk/master/_screenshots/moonwalk.png" />
 
-The original purpose of this theme is to be a replacement of the default Jekyll theme -- [Minima](https://github.com/jekyll/minima). Hamilton is an enhancement of Minima but still, keep in minimal.
+<h3 align="center">
+  <img src="https://raw.githubusercontent.com/abhinavs/moonwalk/master/logo.png" width="24"/>
+<a href="https://abhinavs.github.io/moonwalk/">TRY THE DEMO</a>
+</h3>
 
-Please check out the [demo](https://ngzhio.github.io/jekyll-theme-hamilton/).
+## Features
+* Light & dark mode with theme switcher
+* Vertical list, horizontal list, card list
+* Landing page with navbar, footer, portfolio
+* Fast (very minimal CSS) - 100/100 on performance, accessibility, best practices and SEO, please see [Lighthouse Report](https://raw.githubusercontent.com/abhinavs/moonwalk/master/_screenshots/lighthouse-report.png) for more details
+* Responsive and mobile friendly
+* SEO optimized (uses [Jekyll Soopr SEO Tag](https://github.com/jekyll/jekyll-soopr-seo-tag))
+* RSS feed (uses [Jekyll Feed](https://github.com/jekyll/jekyll-feed))
+* Easy to extend
+* Fully compatible with [GitHub Pages](https://pages.github.com/) (see [GitHub Pages installation](#github-pages-installation))
+* Auto-generated share images for social media (using [Soopr](https://www.soopr.co))
+* Share & like buttons (using [Soopr](https://www.soopr.co))
 
-| Skins | Displays |
-| ----- | -------- |
-| Daylight | ![screenshot](screenshot.png) |
-| Sunrise/Sunset | ![screenshot](screenshot-sunrise.png) |
-| Midnight | ![screenshot](screenshot-midnight.png) |
 
-## Features <!-- omit in toc -->
+#### Lighthouse
 
-- [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag)
-- [Jekyll Feed](https://github.com/jekyll/jekyll-feed)
-- [Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
-- [Google Analytics](https://analytics.google.com/)
-- [MathJax](https://www.mathjax.org/)
-- [Disqus](https://disqus.com/)
-- [Font Awesome](https://fontawesome.com/)
-- TOC
-- Customizable head
-- Configurable page navigation
-- Customizable styles and skins
-- Archive pages implemented in pure Liquid
+<img src="https://raw.githubusercontent.com/abhinavs/moonwalk/master/_screenshots/lighthouse-report.png" />
 
-## Table of Contents <!-- omit in toc -->
+## Quick Installation
+1. [Fork this repository](https://github.com/abhinavs/moonwalk/fork).
+2. `cd moonwalk`
+3. `bin/bootstrap`
+4. [Optional] Sign up on Soopr, and add your `publish_token` in `_config.yml` file.
 
-- [Installation](#installation)
-- [Configuration](#configuration)
-  - [Optional Parameters](#optional-parameters)
-- [Archive Pages](#archive-pages)
-- [MathJax](#mathjax)
-- [TOC](#toc)
-- [Customization](#customization)
-  - [Metadata](#metadata)
-  - [Navigation](#navigation)
-  - [Social Media](#social-media)
-  - [Skins](#skins)
-  - [More Customized Styles](#more-customized-styles)
-- [License](#license)
+If you are installing Moonwalk on Windows, please note that you might have to use Ruby 3.0.x instead of Ruby 3.1.x - you can see Windows specific installation instructions [here](https://github.com/abhinavs/moonwalk/blob/master/moonwalk_on_windows.md)
 
-## Installation
+## Starting Server
+`bin/start` - development server will start at http://127.0.0.1:4000
 
-You can choose one of the following methods to install Hamilton:
+## Deployment
+Moonwalk can be easily deployed on all the cloud providers (AWS etc.), and on static website hosting services like Netlify & Vercel. You can also use this button to do one click deploy
+<br />
+<br />
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/abhinavs/moonwalk)
 
-- Directly specify the `jekyll-theme-hamilton` gem.
+If you want to use Moonwalk as a gem or use Github Pages, please see [this page](https://github.com/abhinavs/moonwalk/blob/master/github_pages.md)
 
-    1. Add `gem 'jekyll-theme-hamilton'` into your `Gemfile`.
-    2. Add the below lines into your `_config.yml`.
+## Customizing
 
-        ```yml
-        plugins:
-          - jekyll-theme-hamilton
-        ```
+You can edit `_config.yml` file to customize your blog. You can change things such as the name of the blog, the author, the appearance of the theme (light, dark or auto), how dates are formatted, etc. Customizable fields should be straightforward to understand. Still, `_config.yml` contains some comments to help you understand what each field does.
 
-- If your site is hosted on GitHub Pages, you can use [`jekyll-remote-theme`](https://github.com/benbalter/jekyll-remote-theme) to import the master branch of Hamilton.
+For further customization (e.g. layout, CSS) see the [official Jekyll's documentation](https://jekyllrb.com/docs/themes/#overriding-theme-defaults) on customizing gem-based themes.
 
-    1. Add `gem 'jekyll-remote-theme'` into your `Gemfile`.
-    2. Add the below lines into your `_config.yml`.
+### Customize the menu
 
-        ```yml
-        plugins:
-          - jekyll-remote-theme
+In order to add/edit/delete entries in the home page, you can copy the `home.yml` file inside `_data` folder. Through that file you can define the structure of the menu and add data for navbar, footer, portfolio or simply remove all of that and use simple blog layout. Take a look at the default configuration to get an idea of how it works and read on for a more comprehensive explaination.
 
-        remote_theme: ngzhio/jekyll-theme-hamilton
-        ```
+The `home.yml` file accepts the following fields:
 
-## Configuration
+1. Vertical list
+  - `entries` define a new unordered list that will contain menu entries
+  - each entry is marked by a `-` at the beginning of the line
+  - each entry has the following attributes:
+    - `title`, which defines the text to render for that menu entry
+    - `url`, which can either be a URL or `false`. If it is `false`, the entry will be rendered as plain text; otherwise the entry will be rendered as a link pointing to the specified URL. Note that the URL can either be relative or absolute.
+    - `post_list`, which can be `true` or `false`. If it is true, the entry will have all posts in the site as subentries. This is used to render your post list.
+    - `entries`, yes, you can have entries inside entries. In this way you can create nested sublists!
+2. Card list - cards are used to showcase portfolio projects. Please see `project_entries` in `_data/home.yml` file
+  - each entry is marked by a `-` at the beginning of the line
+  - each entry has the following attributes:
+    - `title` defines the header of the card
+    - `desc` is the body of the card
+    - `url` is a relative or absolute link which this card can point to.
+    - `highlight` in case you want to highlight something, keep the text short though
+3. Horizontal list - moonwalk uses horizontal lists to create navbar and footer. Please see `navbar_entries` and `footer_entries` in `data/home.yml` file
+  - each entry is marked by a `-` at the beginning of the line
+  - each entry has the following attributes:
+    - `title` defines the header of the card
+    - `url` is a relative or absolute link which this card can point to.
 
-After installation, you can run `jekyll serve` to check out your site, but before that, *make sure* the below **required parameters** are configured in your `_config.yml`.
 
-| Parameters | Types | Specifications |
-|:---------- |:----- |:-------------- |
-| `title`    | string | The site title |
-| `disqus`   | string | The Disqus shortname; Unless you don't want to enable the comments system, you must specify this parameter. It is used in the production environment. |
-| `google_analytics` | string | The Google Analytics tracking ID; It is used in the production environment. |
+### Pro tips
+1. Moonwalk has 3 in-built layouts:
+  - post - for content
+  - blog - for listing blog posts
+  - home - for landing page
+  you can change your `index.md` file to use either home or blog layout.
 
-### Optional Parameters
-
-| Parameters | Types | Specifications |
-|:---------- |:----- |:-------------- |
-| `author`   | string | The name of the author of the site; It would be showed in the copyright statement. |
-| `avatar`   | string | The avatar of the author of the site. |
-| `email`    | string | The email of the author of the site. |
-| `location` | string | The current living location of the author of the site. |
-| `skin`     | string | The skin name. See more information on the [Customization](#customization) section. |
-| `lang`     | string | The language of the site; The default value is `en`. |
-| `paginate` | int    | The number of posts on each page. |
-| `date_format` | string | The date format; The default value is `%b %-d, %Y`. |
-| `subscribe` | boolean | Show the subsribe feed button. |
-
-## Archive Pages
-
-Hamilton implements some archive templates in pure Liquid. For example, if you want to create a category archive page, set the below parameters on that page:
-
-```yml
----
-layout: archive-taxonomies
-type: categories
----
+2. It is extremely easy to tweak the color scheme. 
+  - for light mode, customize these css variables
+```css
+html {
+    --bg: #fff;
+    --bg-secondary: #f3f4f6;
+    --headings: #1e293b;
+    --text: #374151;
+    --text-secondary: #6b7280;
+    --links: #6366f1;
+    --highlight: #ffecb2; // light yellow
+    --code-text: #9d174d;
+}
 ```
-
-Or a tag archive page:
-
-```yml
-layout: archive-taxonomies
-type: tags
+  - for dark mode customize these css variables
+```css
+@mixin dark-appearance {
+  html, body  {
+      --headings: #74c0fc;
+      --links: #91a7ff;
+      --highlight: #41c7c7;
+      --bg: #1f242a;
+      --bg-secondary: #323945;
+      --text: #adb5bd;
+      --text-secondary: #9ca3af;
+      --code-text: #91a7ff;
+  };
+}
 ```
+3. Sign up for free on [Soopr](https://www.soopr.co) and add your `publish_token` in `_config.yml` file - with this, each page gets short URL, like button and auto generated share image for social media.
 
-Or archive by years:
+<img src="https://raw.githubusercontent.com/abhinavs/moonwalk/master/_screenshots/twitter_card.png" />
 
-```yml
-layout: archive-years
-```
+## Contributing
 
-## MathJax
+Bug reports and pull requests are welcome on GitHub at https://github.com/abhinavs/moonwalk.
 
-You can enable MathJax on each post or page, just set `math: true` on that page.
+## Development
 
-## TOC
+To set up your environment to develop this theme, run `bundle install`.
 
-If you want to show the Table of Contents of a post or page on the left sidebar, just set `toc: true` on that page.
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
-## Customization
+When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
+To add a custom directory to your theme-gem, please edit the regexp in `moonwalk.gemspec` accordingly.
 
-### Metadata
-
-You can create a file `_includes/custom-head.html` in your repository, and add any metadata into that page, e.g. favicons.
-
-### Navigation
-
-You can create a file `_data/navigation.yml` to configure links to some pages. For example,
-
-```yml
-- title: About
-  url: /about/
-- title: Categories
-  url: /categories/
-- title: Tags
-  url: /tags/
-```
-
-The navigation bar also supports dropdown submenus:
-
-```yml
-- title: About
-  url: /about/
-- title: Categories
-  url: /categories/
-- title: Tags
-  url: /tags/
-- title: More
-  sublinks:
-    - title: FAQ
-      url: /faq/
-    - title: Docs
-      url: /docs/
-```
-
-### Social Media
-
-You can create a file `_data/social.yml` to configure links to your social media. For example,
-
-```yml
-- title: Twitter
-  url: https://twitter.com/ngzhio
-  icon: fab fa-twitter
-- title: GitHub
-  url: https://github.com/ngzhio/jekyll-theme-hamilton
-  icon: fab fa-github
-```
-
-### Skins
-
-You can select a skin by setting `skin` in `_config.yml`. The built-in skins include `daylight`, `midnight`, `sunrise`, and `sunset`. If you don't specify any skin, Hamilton would dynamically select one in these built-in skins according to different hours in a day.
-
-You can also customize a new skin, for example, a skin called `solarized`. You need to copy [`_sass/hamilton/skins/daylight.scss`](_sass/hamilton/skins/daylight.scss) into your repository and then rename it to `solarized.scss`, and adjust some colors in that file. Finally, specify `skin: solarized` in `_config.yml`.
-
-### More Customized Styles
-
-If you want to create more CSS styles in your site, creating a file `_sass/hamilton/custom-styles.scss`, and putting your code in there, Hamilton would automatically refer to them.
+## Acknowledgement
+This theme's original base is [no style please!](https://github.com/riggraz/no-style-please) theme created by  [Riccardo Graziosi](https://riggraz.dev/) - many thanks to him for creating a wonderful theme with nearly no css. 
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](LICENSE.txt).
+The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Other Projects
+If you like Moonwalk, do check out my other projects
+*   [cookie](https://github.com/abhinavs/cookie) - a free landing website boilerplate using Jekyll and Tailwind CSS
+*   [scoop](https://github.com/abhinavs/scoop) - a Sinatra boilerplate project using Corneal, ActiveRecord, Capistrano, Puma & Nginx
+*   [soopr](https://www.soopr.co) - a tool that supports you in content marketing
+*   [apicagent](https://www.apicagent.com) - a FREE API that extracts device details from user-agent string
+*   [pincodr](https://pincodr.apiclabs.com) - a FREE API for Indian pincodes
+*   [humangous](https://www.humangous.co) - create public and private 'working with you' guides
+*   [blockr](https://www.abhinav.co/blockr) - a CLI tool to help you easily block and unblock websites
+*   [microrequests](https://www.abhinav.co/microrequests) - a Python library to help you consume microservice efficiently
+
+✨⚡You can read more about me on my [blog](https://www.abhinav.co/about/) or follow me on Twitter - [@abhinav](https://twitter.com/abhinav)
+
+✨⚡If you like my work, you can [buy me a coffee](https://buymeacoffee.com/abhinavs)                
