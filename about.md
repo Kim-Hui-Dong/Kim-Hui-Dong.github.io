@@ -3,6 +3,5 @@ layout: post
 title: About
 ---
 
-This is an example page!
-
-Actually, it has the same layout of a post...
+# 좋은 인공지능 개발자가 되고싶은 희동의 블로그입니다!
+### 현재 인공지능을 새로 배우고있는 
