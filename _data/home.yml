@@ -2,7 +2,7 @@ navbar_entries:
   - title: Kim-Hui-Dong
     url: about
 
-  - title: all posting
+  - title: All posting
     url: blog
 
 
@@ -34,36 +34,20 @@ project_entries:
     url: overview-post
     desc: It also has a scalable vertical list (in case you need it)
 
-old_project_entries:
-  - title: Soopr
-    url: https://www.soopr.co
-    desc: Delight your readers - add beautiful share and like buttons easily to your websites 
-    highlight: NEW
-
-  - title: Cookie
-    url: https://github.com/abhinavs/cookie
-    desc: An open source landing website with supporting pages and integrated blog
-
-  - title: Moonwalk
-    url: https://github.com/abhinavs/moonwalk
-    desc: A fast and minimalist Jekyll blog theme with clean dark mode
-
-  - title: Humangous
-    url: https://www.humangous.co
-    desc: The better people know you, the better they collaborate
-
+project_entries:
+  - title: pygame_project
+    url: https://github.com/Kim-Hui-Dong/pygame-bravo-rpg
+    desc: develop pygame(rpg_game)
+    
 footer_entries:
-  - title: abhinav's homepage
-    url: https://www.abhinav.co
+  - title: HuiDong_Facebook
+    url: https://www.facebook.com/profile.php?id=100058946286689
 
-  - title: twitter
-    url: https://twitter.com/abhinav
+  - title: HuiDong_Insta
+    url: https://www.instagram.com/acting__97/
 
-  - title: github
-    url: https://github.com/abhinavs
-
-  - title: feed
-    url: feed.xml
+  - title: HuiDong_github
+    url: https://github.com/Kim-Hui-Dong
 
 misc_entries:
   - title: this is an example vertical list
