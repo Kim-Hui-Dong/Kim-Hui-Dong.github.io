@@ -1,12 +1,11 @@
 navbar_entries:
-  - title: about
+  - title: Kim-Hui-Dong
     url: about
 
-  - title: blog
+  - title: all posting
     url: blog
 
-  - title: website
-    url: https://www.abhinav.co
+
 
 project_entries:
   - title: Project 1
