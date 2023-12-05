@@ -4,7 +4,7 @@ title: About
 ---
 
 # 좋은 인공지능 개발자가 되고싶은 희동의 블로그입니다!
-![Alt text](KakaoTalk_Photo_2023-12-06-02-09-10.jpeg)
+![자기소개 사진](https://github.com/Kim-Hui-Dong/Kim-Hui-Dong.github.io/assets/129731833/81226c02-7a1b-4642-9d92-aa5e8d8a831c)
 ### 경영학과, 인공지능학과 복수 전공하였습니다.
 ### 주 사용언어는 파이썬입니다.
 ### 창업경험, 기타 등등 있습니다.
